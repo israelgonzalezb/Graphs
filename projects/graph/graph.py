@@ -13,19 +13,27 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        # TODO
+        self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        # TODO
+        # Get the relevant vertex
+        v1_edges_set = self.vertices[v1]
+
+        # add to a set by doing .add
+        v1_edges_set.add(v2)
 
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        # TODO
+        # Adjacency lists are easy to get neighbors from
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
