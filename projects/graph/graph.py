@@ -110,9 +110,9 @@ class Graph:
 
     def bfs(self, starting_vertex, destination_vertex):
         """
-        Write a function within your Graph class that takes takes a starting node 
-        and a destination node as an argument, then performs BFS. 
-        Your function should return the shortest path from the start node 
+        Write a function within your Graph class that takes takes a starting node
+        and a destination node as an argument, then performs BFS.
+        Your function should return the shortest path from the start node
         to the destination node. Note that there are multiple valid paths.
 
         Return a list containing the shortest path from
@@ -171,10 +171,10 @@ class Graph:
         # always use None as default for any mutable arguments you will use!
         # https://florimond.dev/blog/articles/2018/08/python-mutable-defaults-are-the-source-of-all-evil/
         """
-        Write a function within your Graph class that takes takes a starting node 
-        and a destination node as an argument, then performs DFS using recursion. 
-        Your function should return a valid path (not necessarily the shortest) 
-        from the start node to the destination node. 
+        Write a function within your Graph class that takes takes a starting node
+        and a destination node as an argument, then performs DFS using recursion.
+        Your function should return a valid path (not necessarily the shortest)
+        from the start node to the destination node.
         Note that there are multiple valid paths.
 
         Return a list containing a path from
@@ -187,21 +187,22 @@ class Graph:
             path = []
         if visited is None:
             visited = set()
-
-        path.append(starting_vertex)
+        print("start vert", starting_vertex)
+        print("path", path)
+        path = path + [starting_vertex]
 
         visited.add(starting_vertex)
 
         if starting_vertex is destination_vertex:
             return path
-        else:
-            for neighbor in self.get_neighbors(starting_vertex):
-                if neighbor not in visited:
-                    neighbor_path = self.dfs_recursive(
-                        neighbor, destination_vertex, path, visited)
-                    if neighbor_path:
-                        return neighbor_path
 
+        for neighbor in self.get_neighbors(starting_vertex):
+            print("neighbor", neighbor)
+            if neighbor not in visited:
+                neighbor_path = self.dfs_recursive(
+                    neighbor, destination_vertex, path, visited)
+                if neighbor_path and neighbor_path[-1] is destination_vertex:
+                    return neighbor_path
         return None
 
 
